@@ -16,18 +16,26 @@ var tileset = viewer.scene.primitives.add(new Cesium3DTileset({
 
 //cesium.when(tileset.readyPromise).then(function (tileset) {viewer.flyTo(tileset)})
 // chroma.scale(['#fafa6e','#2A4858']).mode('lch').colors(6)
-function colorByHeight () {
-    tileset.style = new Cesium3DTileStyle({
+
+
+function color_kiasma() {
+    /*
+    Set Kiasma to blue and all the rest of Helsinki in green
+    */
+    C.tileset.style = new C.Cesium3DTileStyle({
         color: {
             conditions: [
-                ['${Height} >= 300', 'color("#FF442E")'],
-                ['${Height} >= 200', 'color("#FF8000")'],
-                ['${Height} >= 100', 'color("#E7A700")'],
-                ['${Height} >= 50', 'color("#CFC600")'],
-                ['${Height} >= 25', 'color("#A4B600")'],
-                ['${Height} >= 10', 'color("#6A9E00")'],
+                ['${id} === "BID_4cdd8999-e30d-4275-9c73-72fede8fc174"', 'color("blue")'],
+                ['${classId} === 26', 'color("green")'],
                 ['true', 'rgb(127, 59, 8)']
             ]
         }
     });
 }
+
+color_kiasma();
+
+// Publish Cesium tools and objects into global scope for in-browser dev
+window.C = { Viewer, Cesium3DTileStyle, Cesium3DTileset, tileset, viewer };
+
+console.log("done with the configs")
