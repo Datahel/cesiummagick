@@ -22,7 +22,7 @@ function color_kiasma() {
     /*
     Set Kiasma to blue and all the rest of Helsinki in green
     */
-    C.tileset.style = new C.Cesium3DTileStyle({
+    tileset.style = new Cesium3DTileStyle({
         color: {
             conditions: [
                 ['${id} === "BID_4cdd8999-e30d-4275-9c73-72fede8fc174"', 'color("blue")'],
